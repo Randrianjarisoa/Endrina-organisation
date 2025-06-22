@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import cors from "cors";
-import express from "express";
+import express, { Request, Response } from "express";
 
 const prisma = new PrismaClient();
 const app = express();
@@ -8,7 +8,7 @@ const app = express();
 app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
 
-app.get("/api/health", (req, res) => {
+app.get("/api/health", (req: Request, res: Response) => {
   res.json({ status: "healthy" });
 });
 
